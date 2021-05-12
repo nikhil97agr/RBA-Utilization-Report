@@ -9,19 +9,13 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QFileDialog, QMessageBox
 
 
 class Ui_MainWindow(object):
-
-    def __init__(self):
-        self.logFile = None
-
     def setupUi(self, MainWindow):
-        self.MainWindow = MainWindow
-        self.MainWindow.setObjectName("MainWindow")
-        self.MainWindow.setFixedSize(739, 431)
-        self.centralwidget = QtWidgets.QWidget(self.MainWindow)
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(739, 431)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color:rgb(80, 147, 255)")
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -141,115 +135,15 @@ class Ui_MainWindow(object):
         self.emailInput.setText("")
         self.emailInput.setReadOnly(True)
         self.emailInput.setObjectName("emailInput")
-        self.MainWindow.setCentralWidget(self.centralwidget)
+        MainWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(self.MainWindow)
+        self.retranslateUi(MainWindow)
         self.duList.setCurrentIndex(-1)
-        QtCore.QMetaObject.connectSlotsByName(self.MainWindow)
-
-        self.populateList()
-
-        self.emailReport.setEnabled(False)
-        self.downloadReport.setEnabled(False)
-        self.downloadButton.setEnabled(False)
-
-        self.setupClicks()
-
-
-    def setupClicks(self):
-
-        self.browseButton.clicked.connect(self.browse)
-        self.generateReportButton.clicked.connect(self.generateReport)
-        self.emailReport.toggled.connect(self.email)
-        self.downloadReport.toggled.connect(self.download)
-        self.downloadButton.clicked.connect(self.downloadOrSend)
-
-    #function to either email or download report  
-    def downloadOrSend(self):
-        
-        if self.downloadButton.text() == "Send":
-            self.emailId = self.emailInput.text()
-
-        else:
-            dialog = QFileDialog()
-            dir = dialog.getExistingDirectory()
-
-        
-    #function to email the report
-    def email(self):
-        if  not self.emailReport.isChecked:
-            return
-        
-        self.emailInput.setPlaceholderText("Enter your email")
-        self.emailInput.setReadOnly(False)
-        self.emailInput.setText("")
-
-        self.downloadButton.setText("Send")
-
-
-    #function to download the report
-    def download(self):
-        if not self.downloadReport.isChecked:
-            return
-        
-        self.emailInput.setPlaceholderText("File location")
-        self.emailInput.setReadOnly(True)
-        
-        self.downloadButton.setText("Download")
-
-    def browse(self):
-        dialog = QFileDialog()
-        
-        fname = dialog.getOpenFileName(None, "Select File", "", "Log files (*.log)")
-
-        if len(fname[0]) != 0:
-            self.logFile = fname[0]
-            self.fileLocation.setText(self.logFile)
-            #call function to send log file
-
-    def generateReport(self):
-
-        popup = QMessageBox()
-        popup.setIcon(QMessageBox.Critical)
-        popup.setWindowTitle("RBA Generator")
-        
-        if self.logFile == None:
-            popup.setText("Select a file")
-            popup.exec()
-            return
-        
-        if self.puList.currentIndex()==0:
-            popup.setText("Select valid PU")
-            popup.exec()
-            return
-        
-        if self.duList.currentIndex()==0:
-            popup.setText("Select valid DU")
-            popup.exec()
-            return
-        
-        if self.accountsList.currentIndex()==0:
-            popup.setText("Select valid Account")
-            popup.exec()
-            return
-
-        #call function to generate report of the file and get the file name
-        self.reportFileName.setText("File name")
-
-        self.downloadReport.setEnabled(True)
-        self.emailReport.setEnabled(True)
-        self.downloadButton.setEnabled(True)
-
-    def populateList(self):
-
-        self.puList.addItems(["Select PU","Temp"])
-        self.duList.addItems(["Select DU", "CMT", "MFG", "INS", "BFS", "NOR", "EUR"])
-        self.accountsList.addItems(['Select Accounts', "Honda", "Fox", "Viacom"])
-
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        self.MainWindow.setWindowTitle(_translate("MainWindow", "RBA"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "RBA"))
         self.label.setText(_translate("MainWindow", "RBA Report Generator"))
         self.fileLocation.setPlaceholderText(_translate("MainWindow", "Browse log file......"))
         self.browseButton.setText(_translate("MainWindow", "Browse"))
@@ -260,15 +154,3 @@ class Ui_MainWindow(object):
         self.emailReport.setText(_translate("MainWindow", "Email Report"))
         self.downloadButton.setText(_translate("MainWindow", "Download"))
         self.emailInput.setPlaceholderText(_translate("MainWindow", "File Location"))
-
-
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    ui.MainWindow.show()
-    sys.exit(app.exec_())

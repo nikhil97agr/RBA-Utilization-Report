@@ -6,14 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>447</height>
+    <width>739</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>RBA</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(80, 147, 255)</string>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -30,7 +33,11 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border : 1px solid</string>
+     <string notr="true">padding-left : 5px;
+background-color:gold;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
      <string>RBA Report Generator</string>
@@ -48,6 +55,16 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:white;
+color:black;
+border : 2px solid white;
+border-radius : 3px
+</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
    </widget>
    <widget class="QComboBox" name="duList">
     <property name="geometry">
@@ -57,6 +74,13 @@
       <width>171</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:white;
+color:black;
+border : 2px solid white;
+border-radius : 3px
+</string>
     </property>
     <property name="currentText">
      <string/>
@@ -74,6 +98,13 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:white;
+color:black;
+border : 2px solid white;
+border-radius : 3px
+</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="fileLocation">
     <property name="geometry">
@@ -81,17 +112,24 @@
       <x>70</x>
       <y>140</y>
       <width>401</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">padding-left : 5px</string>
+     <string notr="true">padding-left : 5px;
+background-color:white;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
-     <string>Browse log file......</string>
+     <string/>
     </property>
     <property name="readOnly">
      <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Browse log file......</string>
     </property>
    </widget>
    <widget class="QPushButton" name="browseButton">
@@ -100,11 +138,18 @@
       <x>530</x>
       <y>140</y>
       <width>171</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color : yellow</string>
+     <string notr="true">padding-left : 5px;
+background-color:gold;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
      <string>Browse</string>
@@ -116,11 +161,18 @@
       <x>260</x>
       <y>200</y>
       <width>291</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color : yellow</string>
+     <string notr="true">padding-left : 5px;
+background-color:gold;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
      <string>Generate Report</string>
@@ -132,7 +184,7 @@
       <x>70</x>
       <y>270</y>
       <width>111</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -150,20 +202,27 @@
       <x>200</x>
       <y>270</y>
       <width>401</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">padding-left : 5px</string>
+     <string notr="true">padding-left : 5px;
+background-color:white;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
-     <string>File name here</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
     <property name="readOnly">
      <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>File name here</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="downloadReport">
@@ -209,35 +268,52 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>390</y>
+      <y>382</y>
       <width>171</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color : yellow</string>
+     <string notr="true">padding-left : 5px;
+background-color:gold;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
      <string>Download</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="emaiInput">
+   <widget class="QLineEdit" name="emailInput">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>390</y>
+      <y>379</y>
       <width>401</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string/>
+    </property>
     <property name="styleSheet">
-     <string notr="true">padding-left : 5px</string>
+     <string notr="true">padding-left : 5px;
+background-color:white;
+color:black;
+border: 2px solid white;
+border-radius : 5px</string>
     </property>
     <property name="text">
-     <string>File Location</string>
+     <string/>
     </property>
     <property name="readOnly">
      <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>File Location</string>
     </property>
    </widget>
   </widget>

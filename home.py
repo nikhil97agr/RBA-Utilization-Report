@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
-
+import extract_data
 
 class Ui_MainWindow(object):
 
@@ -204,8 +204,8 @@ class Ui_MainWindow(object):
 
         if len(fname[0]) != 0:
             self.logFile = fname[0]
-            self.fileLocation.setText(self.logFile)
-            #call function to send log file
+            self.fileLocation.setText(self.logFile)     
+            #call function to send log file 
 
     def generateReport(self):
 
@@ -234,7 +234,10 @@ class Ui_MainWindow(object):
             return
 
         #call function to generate report of the file and get the file name
-        self.reportFileName.setText("File name")
+        name_list=[self.puList.currentText(),self.duList.currentText(),self.accountsList.currentText()]
+        
+        finalFileName=extract_data.extract_data(name_list,self.logFile,"script_name_utilization_report_")
+        self.reportFileName.setText(finalFileName)
 
         self.downloadReport.setEnabled(True)
         self.emailReport.setEnabled(True)

@@ -78,14 +78,8 @@ def extract_data(name_list,logFileName,exportFileName):
                 full_details.append(script_details)
 
         now = datetime.datetime.now()
-        date_time = now.strftime("%m%d%yT%H%M%S")
-        # print(type(date_time))
+        date_time = now.strftime("%d%m%yT%H%M%S")
         exportFileName=exportFileName+date_time
-
-        # exportFileName=exportFileName+"hello"
-
-        # print(exportFileName)
-
         ExportFile.writeIntoSheet(exportFileName,full_details)
 
         return exportFileName

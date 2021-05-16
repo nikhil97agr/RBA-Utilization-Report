@@ -1,9 +1,19 @@
 import re
 import datetime
 import ExportFile
-
+import logging
+##### Function for calculating execution time of a script from given strings of execution start and end time #####
 def ExeTime(date_time_str, date_time_str2):
-
+    ##### Create and configure logger #####
+    logging.basicConfig(filename="newfile.log",format='%(asctime)s %(message)s',filemode='w')
+  
+    ##### Creating an object #####
+    logger=logging.getLogger()
+  
+    ##### Setting the threshold of logger to DEBUG #####
+    logger.setLevel(logging.DEBUG)
+    logger.info("Function for calculating execution time of a script is called")
+    logger.info("Calculating execution time.........")
     date_time_obj = datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S.%f')
 
     date_time_obj2 = datetime.datetime.strptime(date_time_str2, '%Y-%m-%d %H:%M:%S.%f')
@@ -26,9 +36,19 @@ def ExeTime(date_time_str, date_time_str2):
     else:
         return(str(seconds)+"s")
 
-
-# filename = "Customer_CreationSingleOrMultipleV1.9_030521.log"
+##### Function for extracting data like ACE ID, exec start, exec end time, started by..etc from given log file #####
+##### filename = "Customer_CreationSingleOrMultipleV1.9_030521.log" #####
 def extract_data(name_list,logFileName,exportFileName): 
+    ##### Create and configure logger #####
+    logging.basicConfig(filename="newfile.log",format='%(asctime)s %(message)s',filemode='w')
+  
+    ##### Creating an object #####
+    logger=logging.getLogger()
+  
+    ##### Setting the threshold of logger to DEBUG #####
+    logger.setLevel(logging.DEBUG)
+    logger.info("Function for extracting data from log file is called")
+    logger.info("Declairing variables")
     ace_id=""
     exec_status=0
     count=0
@@ -36,36 +56,40 @@ def extract_data(name_list,logFileName,exportFileName):
     exec_by=exec_from=""
     end_time=""
     full_details=[]
-    with open(logFileName,"r") as f:
+    logger.info("Opening log file.........")
+    ##### Opening log file and extracting data from it #####
+    with open(logFileName,"r") as file_log:
         end_time_list=[]
-        data = f.readlines()
+        data_log_file = file_log.readlines()
         r = re.compile(".*ACE ID*")
-        total_runs = list(filter(r.match, data))
-        for d in data:
+        total_runs = list(filter(r.match, data_log_file))
+        logger.info("Extracting data from log file.........")
+        for data_lines in data_log_file:
             script_details=["ace","start","end","by","from","time"]
             count+=1
             first=0
-            if data.index(d) == len(data)-1:
-                last_script_time=d[d.find('[')+1:d.find(']')]
+            if data_log_file.index(data_lines) == len(data_log_file)-1:
+                last_script_time=data_lines[data_lines.find('[')+1:data_lines.find(']')]
                 script_details[2]=last_script_time
-            d=d.strip()
-            if re.search(".*ACE ID*", d):
+            data_lines=data_lines.strip()
+            ##### Searching for ACE ID in file and extracting the ID from that line #####
+            if re.search(".*ACE ID*", data_lines):
                 if ace_id=="":
                     index=count
-                    ace_id = d[d.find('-',d.find('#'))+2:d.find('-',d.find('#'))+6]
+                    ace_id = data_lines[data_lines.find('-',data_lines.find('#####'))+2:data_lines.find('-',data_lines.find('#####'))+6]
                     exec_status=1    
-                if data.index(d+" \n") > index:
+                if data_log_file.index(data_lines+" \n") > index:
                     first+=1
-                    end_time = d[d.find('[')+1:d.find(']')]
+                    end_time = data_lines[data_lines.find('[')+1:data_lines.find(']')]
             if first%2 !=0:
                 script_details[2]=end_time
             else:
                 script_details[1]=end_time
-
-            if re.search(".*Execution started*", d):                
-                exec_start_time=d[d.find('[')+1:d.find(']')]
-                exec_by=d[d.find('by')+3:d.find(' on')]
-                exec_from=d[d.find(' on')+4:d.find('at')-1]
+            ##### Searching for a pattern and extracting start, end time and executed from and by details from it #####
+            if re.search(".*Execution started*", data_lines):                
+                exec_start_time=data_lines[data_lines.find('[')+1:data_lines.find(']')]
+                exec_by=data_lines[data_lines.find('by')+3:data_lines.find(' on')]
+                exec_from=data_lines[data_lines.find(' on')+4:data_lines.find('at')-1]
             script_details[0]=ace_id
             script_details[1]=exec_start_time
             script_details[3]=exec_by
@@ -79,7 +103,10 @@ def extract_data(name_list,logFileName,exportFileName):
 
         now = datetime.datetime.now()
         date_time = now.strftime("%d%m%yT%H%M%S")
+        logger.info("Extraction of data from log file is successful.........")
         exportFileName=exportFileName+date_time
+        logger.info("Generating a Report.........")
+        ##### Calling function to generate report #####
         ExportFile.writeIntoSheet(exportFileName,full_details)
 
         return exportFileName

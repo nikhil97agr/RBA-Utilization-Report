@@ -17,6 +17,7 @@ import EWSmailer
 
 class Ui_MainWindow(object):
     globalFilename=""
+    pu_du_list=[]
     def __init__(self):
         self.logFile = None
 
@@ -174,7 +175,7 @@ class Ui_MainWindow(object):
             self.emailId = self.emailInput.text()
             regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
             if(re.search(regex, self.emailId)):
-                EWSmailer.ews_smailer(self.emailId,Ui_MainWindow.globalFilename)
+                EWSmailer.ews_smailer(self.emailId,Ui_MainWindow.globalFilename,Ui_MainWindow.pu_du_list)
                 popup.setIcon(QMessageBox.Information)
                 popup.setWindowTitle("RBA Generator")
                 popup.setText("Email sent successfully")
@@ -264,6 +265,7 @@ class Ui_MainWindow(object):
 
         #call function to generate report of the file and get the file name
         name_list=[self.puList.currentText(),self.duList.currentText(),self.accountsList.currentText()]
+        Ui_MainWindow.pu_du_list=name_list
         self.finalFileName=extract_filename.extract_filename(self.logFile)
         self.finalFileName=self.finalFileName+"_utilization_report_"
         self.finalFileName=extract_data.extract_data(name_list,self.logFile,self.finalFileName)

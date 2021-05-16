@@ -1,8 +1,16 @@
 import xlsxwriter
-
+import logging
 ##### function to write into spreadsheets #####
 def writeIntoSheet(fileName,valueList):
-
+    ##### Create and configure logger #####
+    logging.basicConfig(filename="newfile.log",format='%(asctime)s %(message)s',filemode='w')
+  
+    ##### Creating an object #####
+    logger=logging.getLogger()
+  
+    ##### Setting the threshold of logger to DEBUG #####
+    logger.setLevel(logging.DEBUG)
+    logger.info("Function for writing into excel sheet/ for generating report is called")
     fileName=fileName+'.xlsx'
     workbook = xlsxwriter.Workbook(fileName)
     worksheet = workbook.add_worksheet()
@@ -29,3 +37,4 @@ def writeIntoSheet(fileName,valueList):
     worksheet.set_column(0,4,10) 
     worksheet.set_column(6,9,15) 
     workbook.close()
+    logger.info("Report generated successfully...!!!!!!")

@@ -186,6 +186,12 @@ class Ui_MainWindow(object):
                 self.emailId = self.emailInput.text()
                 regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
                 #check for valid email id
+                if(len(self.emailId) == 0):
+                    popup.setIcon(QMessageBox.Critical)
+                    popup.setWindowTitle("RBA Generator")
+                    popup.setText("Please enter an Email")
+                    popup.exec()
+                    return
                 if(re.search(regex, self.emailId)):
                     EWSmailer.ews_smailer(self.emailId,Ui_MainWindow.globalFilename,Ui_MainWindow.pu_du_list)
                     popup.setIcon(QMessageBox.Information)

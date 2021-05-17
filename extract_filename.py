@@ -1,6 +1,7 @@
 import re
 import logging
 import EWSmailer
+import sys
 ##### Function for extracting file name from entered path #####
 def extract_filename(name):
     #Create and configure logger
@@ -42,3 +43,4 @@ Sysadmin
         '''
         logger.exception(e)
         EWSmailer.ews_smailer_error(subject,body)
+        sys.exit()

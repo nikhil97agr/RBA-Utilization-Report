@@ -1,139 +1,21 @@
-2021-05-17 12:44:54,596 Function for sending email for error reporting is called
-2021-05-17 12:44:54,596 Waiting for _protocol_cache_lock
-2021-05-17 12:44:54,596 Protocol __call__ cache miss. Adding key '('https://outlook.office365.com/EWS/Exchange.asmx', ServiceAccount('nihar.tiwari@lntinfotech.com', '********'), True)'
-2021-05-17 12:44:54,596 Getting service auth type for https://outlook.office365.com/EWS/Exchange.asmx
-2021-05-17 12:44:54,597 Requesting b'<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"><s:Header><t:RequestServerVersion Version="Exchange2016" /></s:Header><s:Body><m:ResolveNames ReturnFullContactData="false"><m:UnresolvedEntry>nihar.tiwari@lntinfotech.com</m:UnresolvedEntry></m:ResolveNames></s:Body></s:Envelope>' from https://outlook.office365.com/EWS/Exchange.asmx
-2021-05-17 12:44:54,600 Starting new HTTPS connection (1): outlook.office365.com:443
-2021-05-17 12:44:55,106 https://outlook.office365.com:443 "POST /EWS/Exchange.asmx HTTP/1.1" 401 0
-2021-05-17 12:44:55,106 Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'compress, gzip', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/xml; charset=utf-8', 'Content-Length': '471'}
-2021-05-17 12:44:55,106 Response headers: {'Server': 'Microsoft-IIS/10.0', 'request-id': '28d4e6f1-b7a5-409e-96df-153e8db5ffee', 'X-Powered-By': 'ASP.NET', 'X-FEServer': 'PN2PR01CA0027', 'WWW-Authenticate': 'Basic Realm=""', 'Date': 'Mon, 17 May 2021 07:14:37 GMT', 'Content-Length': '0'}
-2021-05-17 12:44:55,106 realm: 
-2021-05-17 12:44:55,106 Auth type is basic
-2021-05-17 12:44:55,107 Server outlook.office365.com: Created session 16881
-2021-05-17 12:44:55,108 Server outlook.office365.com: Created session 29226
-2021-05-17 12:44:55,108 Server outlook.office365.com: Created session 14779
-2021-05-17 12:44:55,108 Server outlook.office365.com: Created session 4164
-2021-05-17 12:44:55,108 Getting docs auth type for https://outlook.office365.com/EWS/types.xsd
-2021-05-17 12:44:55,110 Starting new HTTPS connection (1): outlook.office365.com:443
-2021-05-17 12:44:55,525 https://outlook.office365.com:443 "GET /EWS/types.xsd HTTP/1.1" 401 0
-2021-05-17 12:44:55,526 Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'compress, gzip', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/xml; charset=utf-8'}
-2021-05-17 12:44:55,526 Response headers: {'Server': 'Microsoft-IIS/10.0', 'request-id': 'a6be5eb8-d8e2-464e-bff2-16e5d9fdc9a0', 'X-WSSecurity-Enabled': 'True', 'X-WSSecurity-For': 'Logon', 'X-FederationTrustTokenIssuerUri': 'urn:federation:MicrosoftOnline', 'X-WSSecurity-SymmetricKey-Enabled': 'True', 'X-WSSecurity-X509Cert-Enabled': 'True', 'X-OAuth-Enabled': 'True', 'X-Powered-By': 'ASP.NET', 'X-FEServer': 'PN2PR01CA0003', 'WWW-Authenticate': 'Basic Realm=""', 'Date': 'Mon, 17 May 2021 07:14:37 GMT', 'Content-Length': '0'}
-2021-05-17 12:44:55,526 realm: 
-2021-05-17 12:44:55,526 Asking server for version info
-2021-05-17 12:44:55,526 Getting https://outlook.office365.com/EWS/types.xsd with auth type HTTPBasicAuth
-2021-05-17 12:44:55,528 Starting new HTTPS connection (1): outlook.office365.com:443
-2021-05-17 12:44:56,477 https://outlook.office365.com:443 "GET /EWS/types.xsd HTTP/1.1" 200 57525
-2021-05-17 12:44:56,652 Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Basic bmloYXIudGl3YXJpQGxudGluZm90ZWNoLmNvbTpOZXd1c2VyQDEyMzQ1'}
-2021-05-17 12:44:56,652 Response code: 200
-2021-05-17 12:44:56,652 Response headers: {'Content-Length': '57525', 'Content-Type': 'text/xml', 'Content-Encoding': 'gzip', 'Last-Modified': 'Wed, 24 Mar 2021 13:56:00 GMT', 'Accept-Ranges': 'bytes', 'ETag': '"098c56bb520d71:0"', 'Vary': 'Accept-Encoding', 'Server': 'Microsoft-IIS/10.0', 'request-id': '42e7ba17-2b04-4285-af39-b7a1d7febacd', 'X-CalculatedFETarget': 'BMXPR01CU003.internal.outlook.com', 'X-BackEndHttpStatus': '200, 200', 'X-FEProxyInfo': 'BMXPR01CA0061.INDPRD01.PROD.OUTLOOK.COM', 'X-CalculatedBETarget': 'BMXPR01MB3959.INDPRD01.PROD.OUTLOOK.COM', 'X-RUM-Validated': '1', 'X-DiagInfo': 'BMXPR01MB3959', 'X-BEServer': 'BMXPR01MB3959', 'X-Proxy-RoutingCorrectness': '1', 'X-Proxy-BackendServerStatus': '200', 'X-FEServer': 'BMXPR01CA0061, PN2PR01CA0002', 'X-Powered-By': 'ASP.NET', 'Date': 'Mon, 17 May 2021 07:14:38 GMT'}
-2021-05-17 12:44:56,662 Shortname according to https://outlook.office365.com/EWS/types.xsd: None
-2021-05-17 12:44:56,662 Server outlook.office365.com: Waiting for session
-2021-05-17 12:44:56,663 Server outlook.office365.com: Got session 4164
-2021-05-17 12:44:56,663 Session 4164 thread 9280: retry 0 timeout 120 POST'ing to https://outlook.office365.com/EWS/Exchange.asmx after 10s wait
-2021-05-17 12:44:56,664 Starting new HTTPS connection (1): outlook.office365.com:443
-2021-05-17 12:44:57,141 https://outlook.office365.com:443 "POST /EWS/Exchange.asmx HTTP/1.1" 200 None
-2021-05-17 12:44:57,142 Retry: 0
-Waited: 10
-Timeout: 120
-Session: 4164
-Thread: 9280
-Auth type: <requests.auth.HTTPBasicAuth object at 0x000001C2C39711C0>
-URL: https://outlook.office365.com/EWS/Exchange.asmx
-Verify: True
-Allow redirects: False
-Response time: 0.48399999999674037
-Status code: 200
-Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'compress, gzip', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/xml; charset=utf-8', 'Content-Length': '471', 'Authorization': 'Basic bmloYXIudGl3YXJpQGxudGluZm90ZWNoLmNvbTpOZXd1c2VyQDEyMzQ1'}
-Response headers: {'Cache-Control': 'private', 'Transfer-Encoding': 'chunked', 'Content-Type': 'text/xml; charset=utf-8', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Server': 'Microsoft-IIS/10.0', 'request-id': 'c366e8fa-c283-4020-acd2-c1fa729f6f22', 'X-CalculatedFETarget': 'BM1PR0101CU003.internal.outlook.com', 'X-BackEndHttpStatus': '200, 200', 'Set-Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec; expires=Tue, 17-May-2022 07:14:40 GMT; path=/; secure; HttpOnly', 'X-FEProxyInfo': 'BM1PR0101CA0056.INDPRD01.PROD.OUTLOOK.COM', 'X-CalculatedBETarget': 'BMXPR01MB3959.INDPRD01.PROD.OUTLOOK.COM', 'X-RUM-Validated': '1', 'x-EwsHandler': 'ResolveNames', 'X-AspNet-Version': '4.0.30319', 'X-BeSku': 'WCS5', 'X-DiagInfo': 'BMXPR01MB3959', 'X-BEServer': 'BMXPR01MB3959', 'X-Proxy-RoutingCorrectness': '1', 'X-Proxy-BackendServerStatus': '200', 'X-FEServer': 'BM1PR0101CA0056, PN2PR01CA0025', 'X-Powered-By': 'ASP.NET', 'Date': 'Mon, 17 May 2021 07:14:39 GMT'}
-Request data: b'<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"><s:Header><t:RequestServerVersion Version="Exchange2007" /></s:Header><s:Body><m:ResolveNames ReturnFullContactData="false"><m:UnresolvedEntry>nihar.tiwari@lntinfotech.com</m:UnresolvedEntry></m:ResolveNames></s:Body></s:Envelope>'
-Response data: <?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Header><h:ServerVersionInfo MajorVersion="15" MinorVersion="20" MajorBuildNumber="4129" MinorBuildNumber="31" xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></s:Header><s:Body><m:ResolveNamesResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"><m:ResponseMessages><m:ResolveNamesResponseMessage ResponseClass="Success"><m:ResponseCode>NoError</m:ResponseCode><m:ResolutionSet TotalItemsInView="1" IncludesLastItemInRange="true"><t:Resolution><t:Mailbox><t:Name>Nihar Tiwari</t:Name><t:EmailAddress>Nihar.Tiwari@lntinfotech.com</t:EmailAddress><t:RoutingType>SMTP</t:RoutingType><t:MailboxType>Mailbox</t:MailboxType></t:Mailbox></t:Resolution></m:ResolutionSet></m:ResolveNamesResponseMessage></m:ResponseMessages></m:ResolveNamesResponse></s:Body></s:Envelope>
-
-2021-05-17 12:44:57,143 Session 4164 thread 9280: Useful response from https://outlook.office365.com/EWS/Exchange.asmx
-2021-05-17 12:44:57,143 Server outlook.office365.com: Releasing session 4164
-2021-05-17 12:44:57,143 Trying API version Exchange2007 for account None
-2021-05-17 12:44:57,143 Adding missing build number for account None
-2021-05-17 12:44:57,143 API version "Exchange2007" worked but server reports version "Exchange2016". Using "Exchange2016"
-2021-05-17 12:44:57,234 Root (root) created for nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,235 Getting folder Root (root)
-2021-05-17 12:44:57,235 Server outlook.office365.com: Waiting for session
-2021-05-17 12:44:57,235 Server outlook.office365.com: Got session 4164
-2021-05-17 12:44:57,235 Session 4164 thread 9280: retry 0 timeout 120 POST'ing to https://outlook.office365.com/EWS/Exchange.asmx after 10s wait
-2021-05-17 12:44:57,369 https://outlook.office365.com:443 "POST /EWS/Exchange.asmx HTTP/1.1" 200 None
-2021-05-17 12:44:57,376 Retry: 0
-Waited: 10
-Timeout: 120
-Session: 4164
-Thread: 9280
-Auth type: <requests.auth.HTTPBasicAuth object at 0x000001C2C39711C0>
-URL: https://outlook.office365.com/EWS/Exchange.asmx
-Verify: True
-Allow redirects: False
-Response time: 0.139999999984866
-Status code: 200
-Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'compress, gzip', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/xml; charset=utf-8', 'Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec', 'Content-Length': '1173', 'Authorization': 'Basic bmloYXIudGl3YXJpQGxudGluZm90ZWNoLmNvbTpOZXd1c2VyQDEyMzQ1'}
-Response headers: {'Cache-Control': 'private', 'Transfer-Encoding': 'chunked', 'Content-Type': 'text/xml; charset=utf-8', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Server': 'Microsoft-IIS/10.0', 'request-id': '821d91ee-15dd-4ae8-9fa1-9645288868af', 'X-CalculatedFETarget': 'BM1PR0101CU001.internal.outlook.com', 'X-BackEndHttpStatus': '200, 200', 'Set-Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec; path=/; secure', 'X-FEProxyInfo': 'BM1PR0101CA0004.INDPRD01.PROD.OUTLOOK.COM', 'X-CalculatedBETarget': 'BMXPR01MB3959.INDPRD01.PROD.OUTLOOK.COM', 'X-RUM-Validated': '1', 'x-EwsHandler': 'GetFolder', 'X-AspNet-Version': '4.0.30319', 'X-BeSku': 'WCS5', 'X-DiagInfo': 'BMXPR01MB3959', 'X-BEServer': 'BMXPR01MB3959', 'X-Proxy-RoutingCorrectness': '1', 'X-Proxy-BackendServerStatus': '200', 'X-FEServer': 'BM1PR0101CA0004, PN2PR01CA0025', 'X-Powered-By': 'ASP.NET', 'Date': 'Mon, 17 May 2021 07:14:39 GMT'}
-Request data: b'<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"><s:Header><t:RequestServerVersion Version="Exchange2016" /><t:TimeZoneContext><t:TimeZoneDefinition Id="India Standard Time" /></t:TimeZoneContext></s:Header><s:Body><m:GetFolder><m:FolderShape><t:BaseShape>IdOnly</t:BaseShape><t:AdditionalProperties><t:FieldURI FieldURI="folder:FolderClass" /><t:FieldURI FieldURI="folder:DisplayName" /><t:FieldURI FieldURI="folder:TotalCount" /><t:FieldURI FieldURI="folder:ChildFolderCount" /><t:FieldURI FieldURI="folder:UnreadCount" /><t:FieldURI FieldURI="folder:EffectiveRights" /></t:AdditionalProperties></m:FolderShape><m:FolderIds><t:DistinguishedFolderId Id="root"><t:Mailbox><t:EmailAddress>nihar.tiwari@lntinfotech.com</t:EmailAddress><t:MailboxType>Mailbox</t:MailboxType></t:Mailbox><t:Mailbox><t:EmailAddress>nihar.tiwari@lntinfotech.com</t:EmailAddress><t:MailboxType>Mailbox</t:MailboxType></t:Mailbox></t:DistinguishedFolderId></m:FolderIds></m:GetFolder></s:Body></s:Envelope>'
-Response data: <?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Header><h:ServerVersionInfo MajorVersion="15" MinorVersion="20" MajorBuildNumber="4129" MinorBuildNumber="31" Version="V2018_01_08" xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></s:Header><s:Body><m:GetFolderResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"><m:ResponseMessages><m:GetFolderResponseMessage ResponseClass="Success"><m:ResponseCode>NoError</m:ResponseCode><m:Folders><t:Folder><t:FolderId Id="AAMkAGY4YWE2NGQ3LTgzZmEtNDk3NC1iNzMyLTc2OTQzNTIyZDAyNwAuAAAAAAAn5dBokjqwTLdA0/bb0HoRAQDtJzHDaYVmTreWR86Vzav1AAAAAAEBAAA=" ChangeKey="AQAAABYAAADtJzHDaYVmTreWR86Vzav1AACALGxv"/><t:DisplayName/><t:TotalCount>21</t:TotalCount><t:ChildFolderCount>100</t:ChildFolderCount><t:EffectiveRights><t:CreateAssociated>true</t:CreateAssociated><t:CreateContents>true</t:CreateContents><t:CreateHierarchy>true</t:CreateHierarchy><t:Delete>true</t:Delete><t:Modify>true</t:Modify><t:Read>true</t:Read><t:ViewPrivateItems>true</t:ViewPrivateItems></t:EffectiveRights><t:UnreadCount>0</t:UnreadCount></t:Folder></m:Folders></m:GetFolderResponseMessage></m:ResponseMessages></m:GetFolderResponse></s:Body></s:Envelope>
-
-2021-05-17 12:44:57,376 Session 4164 thread 9280: Useful response from https://outlook.office365.com/EWS/Exchange.asmx
-2021-05-17 12:44:57,376 Server outlook.office365.com: Releasing session 4164
-2021-05-17 12:44:57,376 Trying API version Exchange2016 for account nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,377 Root (root) created for nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,377 Added account: nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,377 Testing default <class 'exchangelib.folders.SentItems'> folder with GetFolder
-2021-05-17 12:44:57,377 SentItems (sentitems) created for nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,377 Getting folder SentItems (sentitems)
-2021-05-17 12:44:57,377 Server outlook.office365.com: Waiting for session
-2021-05-17 12:44:57,377 Server outlook.office365.com: Got session 4164
-2021-05-17 12:44:57,378 Session 4164 thread 9280: retry 0 timeout 120 POST'ing to https://outlook.office365.com/EWS/Exchange.asmx after 10s wait
-2021-05-17 12:44:57,531 https://outlook.office365.com:443 "POST /EWS/Exchange.asmx HTTP/1.1" 200 None
-2021-05-17 12:44:57,531 Retry: 0
-Waited: 10
-Timeout: 120
-Session: 4164
-Thread: 9280
-Auth type: <requests.auth.HTTPBasicAuth object at 0x000001C2C39711C0>
-URL: https://outlook.office365.com/EWS/Exchange.asmx
-Verify: True
-Allow redirects: False
-Response time: 0.14100000000325963
-Status code: 200
-Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'compress, gzip', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/xml; charset=utf-8', 'Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec', 'Content-Length': '1178', 'Authorization': 'Basic bmloYXIudGl3YXJpQGxudGluZm90ZWNoLmNvbTpOZXd1c2VyQDEyMzQ1'}
-Response headers: {'Cache-Control': 'private', 'Transfer-Encoding': 'chunked', 'Content-Type': 'text/xml; charset=utf-8', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Server': 'Microsoft-IIS/10.0', 'request-id': 'dbf5787b-7451-4fa5-93fc-f6c0b8bcefad', 'X-CalculatedFETarget': 'BM1PR0101CU003.internal.outlook.com', 'X-BackEndHttpStatus': '200, 200', 'Set-Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec; path=/; secure', 'X-FEProxyInfo': 'BM1PR0101CA0056.INDPRD01.PROD.OUTLOOK.COM', 'X-CalculatedBETarget': 'BMXPR01MB3959.INDPRD01.PROD.OUTLOOK.COM', 'X-RUM-Validated': '1', 'x-EwsHandler': 'GetFolder', 'X-AspNet-Version': '4.0.30319', 'X-BeSku': 'WCS5', 'X-DiagInfo': 'BMXPR01MB3959', 'X-BEServer': 'BMXPR01MB3959', 'X-Proxy-RoutingCorrectness': '1', 'X-Proxy-BackendServerStatus': '200', 'X-FEServer': 'BM1PR0101CA0056, PN2PR01CA0025', 'X-Powered-By': 'ASP.NET', 'Date': 'Mon, 17 May 2021 07:14:40 GMT'}
-Request data: b'<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"><s:Header><t:RequestServerVersion Version="Exchange2016" /><t:TimeZoneContext><t:TimeZoneDefinition Id="India Standard Time" /></t:TimeZoneContext></s:Header><s:Body><m:GetFolder><m:FolderShape><t:BaseShape>IdOnly</t:BaseShape><t:AdditionalProperties><t:FieldURI FieldURI="folder:FolderClass" /><t:FieldURI FieldURI="folder:DisplayName" /><t:FieldURI FieldURI="folder:TotalCount" /><t:FieldURI FieldURI="folder:ChildFolderCount" /><t:FieldURI FieldURI="folder:UnreadCount" /><t:FieldURI FieldURI="folder:EffectiveRights" /></t:AdditionalProperties></m:FolderShape><m:FolderIds><t:DistinguishedFolderId Id="sentitems"><t:Mailbox><t:EmailAddress>nihar.tiwari@lntinfotech.com</t:EmailAddress><t:MailboxType>Mailbox</t:MailboxType></t:Mailbox><t:Mailbox><t:EmailAddress>nihar.tiwari@lntinfotech.com</t:EmailAddress><t:MailboxType>Mailbox</t:MailboxType></t:Mailbox></t:DistinguishedFolderId></m:FolderIds></m:GetFolder></s:Body></s:Envelope>'
-Response data: <?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Header><h:ServerVersionInfo MajorVersion="15" MinorVersion="20" MajorBuildNumber="4129" MinorBuildNumber="31" Version="V2018_01_08" xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></s:Header><s:Body><m:GetFolderResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"><m:ResponseMessages><m:GetFolderResponseMessage ResponseClass="Success"><m:ResponseCode>NoError</m:ResponseCode><m:Folders><t:Folder><t:FolderId Id="AAMkAGY4YWE2NGQ3LTgzZmEtNDk3NC1iNzMyLTc2OTQzNTIyZDAyNwAuAAAAAAAn5dBokjqwTLdA0/bb0HoRAQDtJzHDaYVmTreWR86Vzav1AAAAAAEJAAA=" ChangeKey="AQAAABYAAADtJzHDaYVmTreWR86Vzav1AACDAO10"/><t:FolderClass>IPF.Note</t:FolderClass><t:DisplayName>Sent Items</t:DisplayName><t:TotalCount>65</t:TotalCount><t:ChildFolderCount>0</t:ChildFolderCount><t:EffectiveRights><t:CreateAssociated>true</t:CreateAssociated><t:CreateContents>true</t:CreateContents><t:CreateHierarchy>true</t:CreateHierarchy><t:Delete>true</t:Delete><t:Modify>true</t:Modify><t:Read>true</t:Read><t:ViewPrivateItems>true</t:ViewPrivateItems></t:EffectiveRights><t:UnreadCount>0</t:UnreadCount></t:Folder></m:Folders></m:GetFolderResponseMessage></m:ResponseMessages></m:GetFolderResponse></s:Body></s:Envelope>
-
-2021-05-17 12:44:57,532 Session 4164 thread 9280: Useful response from https://outlook.office365.com/EWS/Exchange.asmx
-2021-05-17 12:44:57,532 Server outlook.office365.com: Releasing session 4164
-2021-05-17 12:44:57,532 Trying API version Exchange2016 for account nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,532 SentItems (Sent Items) created for nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,532 Adding items for nihar.tiwari@lntinfotech.com (folder SentItems (Sent Items), message_disposition: SendAndSaveCopy, send_meeting_invitations: SendToNone)
-2021-05-17 12:44:57,532 Processing items in chunks of 25
-2021-05-17 12:44:57,532 Starting CreateItem._get_elements worker 1 for 1 items
-2021-05-17 12:44:57,532 Waiting for CreateItem._get_elements result 1 of 1
-2021-05-17 12:44:57,533 Adding item Message(subject='Error Occured - Divison by zero - RBA report generator', body='\nHello team\n            \nPlease find below error that has been encountered while execution of ExportFile.py script\n\n*********************\ndivision by zero\n*********************\n            \nKindly check on it and update the status asap\n\n\nThank You.\n\nRegards\nSysadmin\n            ', attachments=[], to_recipients=[Mailbox(None, 'tnihar29@gmail.com', None, None)])
-2021-05-17 12:44:57,533 Server outlook.office365.com: Waiting for session
-2021-05-17 12:44:57,533 Server outlook.office365.com: Got session 4164
-2021-05-17 12:44:57,533 Session 4164 thread 19796: retry 0 timeout 120 POST'ing to https://outlook.office365.com/EWS/Exchange.asmx after 10s wait
-2021-05-17 12:44:57,925 https://outlook.office365.com:443 "POST /EWS/Exchange.asmx HTTP/1.1" 200 None
-2021-05-17 12:44:57,931 Retry: 0
-Waited: 10
-Timeout: 120
-Session: 4164
-Thread: 19796
-Auth type: <requests.auth.HTTPBasicAuth object at 0x000001C2C39711C0>
-URL: https://outlook.office365.com/EWS/Exchange.asmx
-Verify: True
-Allow redirects: False
-Response time: 0.39000000001396984
-Status code: 200
-Request headers: {'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'compress, gzip', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/xml; charset=utf-8', 'Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec', 'Content-Length': '1699', 'Authorization': 'Basic bmloYXIudGl3YXJpQGxudGluZm90ZWNoLmNvbTpOZXd1c2VyQDEyMzQ1'}
-Response headers: {'Cache-Control': 'private', 'Transfer-Encoding': 'chunked', 'Content-Type': 'text/xml; charset=utf-8', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Server': 'Microsoft-IIS/10.0', 'request-id': '57a45ac4-e22c-487d-85b3-ce03541311f7', 'X-CalculatedFETarget': 'BM1PR0101CU001.internal.outlook.com', 'X-BackEndHttpStatus': '200, 200', 'Set-Cookie': 'exchangecookie=7e29ee5431b94d99ab02bc675dfc47ec; path=/; secure', 'X-FEProxyInfo': 'BM1PR0101CA0005.INDPRD01.PROD.OUTLOOK.COM', 'X-CalculatedBETarget': 'BMXPR01MB3959.INDPRD01.PROD.OUTLOOK.COM', 'X-RUM-Validated': '1', 'x-EwsHandler': 'CreateItem', 'X-AspNet-Version': '4.0.30319', 'X-BeSku': 'WCS5', 'X-DiagInfo': 'BMXPR01MB3959', 'X-BEServer': 'BMXPR01MB3959', 'X-Proxy-RoutingCorrectness': '1', 'X-Proxy-BackendServerStatus': '200', 'X-FEServer': 'BM1PR0101CA0005, PN2PR01CA0025', 'X-Powered-By': 'ASP.NET', 'Date': 'Mon, 17 May 2021 07:14:40 GMT'}
-Request data: b'<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"><s:Header><t:RequestServerVersion Version="Exchange2016" /><t:TimeZoneContext><t:TimeZoneDefinition Id="India Standard Time" /></t:TimeZoneContext></s:Header><s:Body><m:CreateItem MessageDisposition="SendAndSaveCopy" SendMeetingInvitations="SendToNone"><m:SavedItemFolderId><t:FolderId Id="AAMkAGY4YWE2NGQ3LTgzZmEtNDk3NC1iNzMyLTc2OTQzNTIyZDAyNwAuAAAAAAAn5dBokjqwTLdA0/bb0HoRAQDtJzHDaYVmTreWR86Vzav1AAAAAAEJAAA=" ChangeKey="AQAAABYAAADtJzHDaYVmTreWR86Vzav1AACDAO10" /></m:SavedItemFolderId><m:Items><t:Message><t:Subject>Error Occured - Divison by zero - RBA report generator</t:Subject><t:Sensitivity>Normal</t:Sensitivity><t:Body BodyType="Text">\nHello team\n            \nPlease find below error that has been encountered while execution of ExportFile.py script\n\n*********************\ndivision by zero\n*********************\n            \nKindly check on it and update the status asap\n\n\nThank You.\n\nRegards\nSysadmin\n            </t:Body><t:Importance>Normal</t:Importance><t:ReminderIsSet>0</t:ReminderIsSet><t:ReminderMinutesBeforeStart>0</t:ReminderMinutesBeforeStart><t:ToRecipients><t:Mailbox><t:EmailAddress>tnihar29@gmail.com</t:EmailAddress><t:MailboxType>Mailbox</t:MailboxType></t:Mailbox></t:ToRecipients><t:IsReadReceiptRequested>0</t:IsReadReceiptRequested><t:IsDeliveryReceiptRequested>0</t:IsDeliveryReceiptRequested><t:IsRead>0</t:IsRead><t:IsResponseRequested>0</t:IsResponseRequested></t:Message></m:Items></m:CreateItem></s:Body></s:Envelope>'
-Response data: <?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Header><h:ServerVersionInfo MajorVersion="15" MinorVersion="20" MajorBuildNumber="4129" MinorBuildNumber="31" Version="V2018_01_08" xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></s:Header><s:Body><m:CreateItemResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"><m:ResponseMessages><m:CreateItemResponseMessage ResponseClass="Success"><m:ResponseCode>NoError</m:ResponseCode><m:Items/></m:CreateItemResponseMessage></m:ResponseMessages></m:CreateItemResponse></s:Body></s:Envelope>
-
-2021-05-17 12:44:57,931 Session 4164 thread 19796: Useful response from https://outlook.office365.com/EWS/Exchange.asmx
-2021-05-17 12:44:57,931 Server outlook.office365.com: Releasing session 4164
-2021-05-17 12:44:57,931 Trying API version Exchange2016 for account nihar.tiwari@lntinfotech.com
-2021-05-17 12:44:57,932 CreateItem._get_elements result 1 of 1 is ready
-2021-05-17 12:44:57,932 Email sent successfully
+2021-05-17 15:01:20,102 Selected log file: G:/dOCS/LTI/OJT/Week 6/CustomerCreationLogs/LOGS/03MRZ2021/Customer_CreationSingleOrMultipleV1.5/Customer_CreationSingleOrMultipleV1.5_030321.log
+2021-05-17 15:01:21,737 Function for extracting file name from entered path is called
+2021-05-17 15:01:21,737 Extracting File name from entered path
+2021-05-17 15:01:21,737 Function for extracting data from log file is called
+2021-05-17 15:01:21,737 Declairing variables
+2021-05-17 15:01:21,737 Opening log file.........
+2021-05-17 15:01:21,757 Extracting data from log file.........
+2021-05-17 15:01:21,758 Function for calculating execution time of a script is called
+2021-05-17 15:01:21,758 Calculating execution time.........
+2021-05-17 15:01:21,761 Function for calculating execution time of a script is called
+2021-05-17 15:01:21,762 Calculating execution time.........
+2021-05-17 15:01:21,762 Function for calculating execution time of a script is called
+2021-05-17 15:01:21,762 Calculating execution time.........
+2021-05-17 15:01:21,762 Function for calculating execution time of a script is called
+2021-05-17 15:01:21,762 Calculating execution time.........
+2021-05-17 15:01:21,762 Function for calculating execution time of a script is called
+2021-05-17 15:01:21,762 Calculating execution time.........
+2021-05-17 15:01:21,762 Extraction of data from log file is successful.........
+2021-05-17 15:01:21,762 Generating a Report.........
+2021-05-17 15:01:21,763 Function for writing into excel sheet/ for generating report is called
+2021-05-17 15:01:21,785 Report generated successfully...!!!!!!

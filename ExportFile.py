@@ -1,6 +1,7 @@
 import xlsxwriter
 import logging
 import EWSmailer
+import sys
 
 ##### function to write into spreadsheets #####
 def writeIntoSheet(fileName,valueList):
@@ -61,4 +62,5 @@ Sysadmin
         '''
         logger.exception(e)
         EWSmailer.ews_smailer_error(subject,body)
+        sys.exit()
 

@@ -32,8 +32,12 @@ def ews_smailer(email,filename,list):
     cfg = ConfigParser()
     cfg.read("config.ini")
     key=cfg['mail']['key']
+    key=bytes(key, 'utf-8')
+    print(type(key))
+    passw=bytes(cfg['mail']['password'],'utf-8')
     f= Fernet(key)
-    credentials = ServiceAccount(username=cfg['mail']['id'],password=f.decrypt(cfg['mail']['password']).decode("utf-8"))
+    print(f.decrypt(cfg['mail']['password']).decode("utf-8"))
+    credentials = ServiceAccount(username=cfg['mail']['id'],password=f.decrypt(passw).decode("utf-8"))
 
     config = Configuration(server="outlook.office365.com", credentials=credentials)
     account = Account(primary_smtp_address=cfg['mail']['id'], config=config,autodiscover=False, access_type=DELEGATE)
@@ -95,8 +99,11 @@ def ews_smailer_error(subject,body):
     cfg = ConfigParser()
     cfg.read("config.ini")
     key=cfg['mail']['key']
+    key=bytes(key, 'utf-8')
+    passw=bytes(cfg['mail']['password'],'utf-8')
+    print(type(key))
     f= Fernet(key)
-    credentials = ServiceAccount(username=cfg['mail']['id'],password=f.decrypt(cfg['mail']['password']).decode("utf-8"))
+    credentials = ServiceAccount(username=cfg['mail']['id'],password=f.decrypt(passw).decode("utf-8"))
 
     config = Configuration(server="outlook.office365.com", credentials=credentials)
     account = Account(primary_smtp_address=cfg['mail']['id'], config=config,autodiscover=False, access_type=DELEGATE)

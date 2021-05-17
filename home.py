@@ -251,7 +251,7 @@ class Ui_MainWindow(object):
         if len(fname[0]) != 0:
             self.logFile = fname[0]
             self.fileLocation.setText(self.logFile)     
-            self.logger.info("Selected log file: "+fname) 
+            self.logger.info("Selected log file: "+fname[0]) 
 
     #function to generate the report 
     def generateReport(self):

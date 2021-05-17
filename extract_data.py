@@ -3,6 +3,7 @@ import datetime
 import ExportFile
 import logging
 import EWSmailer
+import sys
 ##### Function for calculating execution time of a script from given strings of execution start and end time #####
 def ExeTime(date_time_str, date_time_str2):
     ##### Create and configure logger #####
@@ -132,6 +133,7 @@ Sysadmin
         '''
         logger.exception(e)
         EWSmailer.ews_smailer_error(subject,body)
+        sys.exit()
 
 
 

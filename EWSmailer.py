@@ -94,7 +94,9 @@ def ews_smailer_error(subject,body):
 
     cfg = ConfigParser()
     cfg.read("config.ini")
-    credentials = ServiceAccount(username=cfg['mail']['id'],password=cfg['mail']['password'])
+    key=cfg['mail']['key']
+    f= Fernet(key)
+    credentials = ServiceAccount(username=cfg['mail']['id'],password=f.decrypt(cfg['mail']['password']).decode("utf-8"))
 
     config = Configuration(server="outlook.office365.com", credentials=credentials)
     account = Account(primary_smtp_address=cfg['mail']['id'], config=config,autodiscover=False, access_type=DELEGATE)

@@ -14,12 +14,21 @@ from PyQt5.QtWidgets import QFileDialog, QMessageBox
 import extract_data
 import extract_filename
 import EWSmailer
+import logging
 
 class Ui_MainWindow(object):
     globalFilename=""
     pu_du_list=[]
     def __init__(self):
         self.logFile = None
+        #Create and configure logger
+        logging.basicConfig(filename="newfile.log",format='%(asctime)s %(message)s',filemode='w')
+    
+        #Creating an object
+        self.logger=logging.getLogger()
+
+        self.logger.setLevel(logging.DEBUG)
+
 
     def setupUi(self, MainWindow):
         self.MainWindow = MainWindow
@@ -160,6 +169,7 @@ class Ui_MainWindow(object):
         self.setupClicks()
 
 
+    #click events for all the buttons
     def setupClicks(self):
 
         self.browseButton.clicked.connect(self.browse)
@@ -170,41 +180,47 @@ class Ui_MainWindow(object):
 
     #function to either email or download report  
     def downloadOrSend(self):
-        popup = QMessageBox()
-        if self.downloadButton.text() == "Send":
-            self.emailId = self.emailInput.text()
-            regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
-            if(re.search(regex, self.emailId)):
-                EWSmailer.ews_smailer(self.emailId,Ui_MainWindow.globalFilename,Ui_MainWindow.pu_du_list)
-                popup.setIcon(QMessageBox.Information)
-                popup.setWindowTitle("RBA Generator")
-                popup.setText("Email sent successfully")
-                popup.exec()
-                sys.exit()
+        try:
+            popup = QMessageBox()
+            if self.downloadButton.text() == "Send":
+                self.emailId = self.emailInput.text()
+                regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
+                #check for valid email id
+                if(re.search(regex, self.emailId)):
+                    EWSmailer.ews_smailer(self.emailId,Ui_MainWindow.globalFilename,Ui_MainWindow.pu_du_list)
+                    popup.setIcon(QMessageBox.Information)
+                    popup.setWindowTitle("RBA Generator")
+                    popup.setText("Email sent successfully")
+                    popup.exec()
+                    sys.exit()
+                else:
+                    popup.setIcon(QMessageBox.Critical)
+                    popup.setWindowTitle("RBA Generator")
+                    popup.setText("Invalid email")
+                    popup.exec()
+                    return
             else:
-                popup.setIcon(QMessageBox.Critical)
-                popup.setWindowTitle("RBA Generator")
-                popup.setText("Invalid email")
-                popup.exec()
-                return
-        else:
-            dialog = QFileDialog()
-            dir = dialog.getExistingDirectory()
-            if(len(dir)!=0):
-                print(dir)
-                xl_loc=self.finalFileName+".xlsx"
-                shutil.copy(xl_loc,dir)
-                self.emailInput.setText(dir+"/"+xl_loc)
+                #file to download in particular directory
+                dialog = QFileDialog()
+                dir = dialog.getExistingDirectory()
+                if(len(dir)!=0):
+                    # print(dir)
+                    xl_loc=self.finalFileName+".xlsx"
+                    shutil.copy(xl_loc,dir)
+                    self.emailInput.setText(dir+"/"+xl_loc)
+                    self.logger.info("File has downloaded at "+dir)
 
-                popup.setIcon(QMessageBox.Information)
-                popup.setWindowTitle("RBA Generator")
-                popup.setText("Download successful")
-                popup.exec()
+                    popup.setIcon(QMessageBox.Information)
+                    popup.setWindowTitle("RBA Generator")
+                    popup.setText("Download successful")
+                    popup.exec()
 
-                sys.exit()
+                    sys.exit()
+        except Exception as ex:
+            self.logger.error(str(ex))
 
         
-    #function to email the report
+    #function to setup fields to email the report
     def email(self):
         if  not self.emailReport.isChecked:
             return
@@ -216,7 +232,7 @@ class Ui_MainWindow(object):
         self.downloadButton.setText("Send")
 
 
-    #function to download the report
+    #function to setup fields to download the report
     def download(self):
         if not self.downloadReport.isChecked:
             return
@@ -226,7 +242,7 @@ class Ui_MainWindow(object):
         
         self.downloadButton.setText("Download")
         
-
+    #browse the file log file from file explorer
     def browse(self):
         dialog = QFileDialog()
         
@@ -235,8 +251,9 @@ class Ui_MainWindow(object):
         if len(fname[0]) != 0:
             self.logFile = fname[0]
             self.fileLocation.setText(self.logFile)     
-            #call function to send log file 
+            self.logger.info("Selected log file: "+fname) 
 
+    #function to generate the report 
     def generateReport(self):
 
         popup = QMessageBox()
@@ -276,6 +293,7 @@ class Ui_MainWindow(object):
         self.emailReport.setEnabled(True)
         self.downloadButton.setEnabled(True)
 
+    #function to fill the drop downs
     def populateList(self):
 
         self.puList.addItems(["Select PU","AEG","AEG2"])
